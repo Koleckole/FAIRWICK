@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Old Fairway Club</title>
-  <meta name="description" content="Golf clothing from a club that never existed. Reserve the first drop from Old Fairway Club.">
+  <meta name="description" content="Classic golf clothing, established 2026. Reserve the first drop from Old Fairway Club.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Federo&family=Reenie+Beanie&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -17,9 +17,8 @@
       --sage: #dde7d3;
       --oxblood: #7a2230;
       --ink: #13261e;
-      --display: "Federo", Georgia, serif;
+      --display: "Libre Caslon Display", Georgia, serif;
       --body: "Spectral", Georgia, serif;
-      --pencil: "Reenie Beanie", "Comic Sans MS", cursive;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -64,43 +63,66 @@
 
     /* Hero */
     .hero {
-      min-height: 100svh;
+      position: relative;
       display: flex;
       align-items: center;
-      padding: 48px 0;
+      min-height: 100svh;
+      overflow: hidden;
+      background: repeating-linear-gradient(112deg, #0f3d2e 0 170px, #134636 170px 340px);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      align-items: center;
-      gap: 40px;
+    #ball-field {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .crest {
+      display: block;
+      width: 168px;
+      margin: 0 auto 32px;
     }
 
     .hero h1 {
       color: var(--butter);
-      font-size: clamp(4rem, 12vw, 9.5rem);
-      line-height: .92;
+      font-size: clamp(3.25rem, 8.5vw, 6.75rem);
+      line-height: 1;
     }
 
-    .hero h1 span { display: block; }
-
     .hero p {
-      max-width: 30ch;
-      margin-top: 28px;
-      font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      margin-top: 20px;
+      font-size: clamp(1.2rem, 2.2vw, 1.5rem);
       line-height: 1.35;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 28px;
+      margin-top: 32px;
     }
 
     .button {
       display: inline-block;
-      margin-top: 32px;
-      padding: 14px 24px;
+      padding: 14px 26px;
       border: 2px solid var(--butter);
       background: var(--butter);
       color: var(--ink);
-      font-family: var(--display);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       text-decoration: none;
       cursor: pointer;
     }
@@ -110,17 +132,11 @@
       color: var(--butter);
     }
 
-    .crest {
-      display: block;
-      width: 100%;
-      max-width: 400px;
-      margin-left: auto;
-      animation: settle 900ms cubic-bezier(.2, .8, .2, 1) both;
-    }
-
-    @keyframes settle {
-      from { opacity: 0; transform: rotate(-14deg) scale(.9); }
-      to { opacity: 1; transform: rotate(0) scale(1); }
+    .story-link {
+      padding: 14px 0;
+      color: var(--butter);
+      font-size: 1.05rem;
+      text-underline-offset: 4px;
     }
 
     /* Scorecard */
@@ -237,8 +253,8 @@
     .count {
       min-width: 2ch;
       color: var(--oxblood);
-      font-family: var(--pencil);
-      font-size: 2.6rem;
+      font-family: var(--display);
+      font-size: 2rem;
       line-height: 1;
       text-align: center;
     }
@@ -263,8 +279,8 @@
 
     .total {
       color: var(--oxblood);
-      font-family: var(--pencil);
-      font-size: 2.8rem;
+      font-family: var(--display);
+      font-size: 2.25rem;
       line-height: 1;
     }
 
@@ -338,6 +354,68 @@
       margin-bottom: 18px;
     }
 
+    /* Story chapters */
+    .chapters {
+      margin: 56px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr) 190px;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
+      border: 2px solid var(--sage);
+      border-top-width: 0;
+    }
+
+    .chapter:first-child { border-top-width: 2px; }
+
+    .chapter h3 {
+      color: var(--butter);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .chapter p {
+      margin: 8px 0 0;
+    }
+
+    .chapter-number {
+      color: var(--butter);
+      font-family: var(--display);
+      font-size: 4rem;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .chapter-status {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      text-align: right;
+    }
+
+    .chapter.open {
+      border-color: var(--butter);
+      background: var(--butter);
+      color: var(--ink);
+    }
+
+    .chapter.open h3,
+    .chapter.open .chapter-number {
+      color: var(--pine);
+    }
+
+    .chapter.open .chapter-status {
+      color: var(--oxblood);
+      text-underline-offset: 4px;
+    }
+
+    .story .chapter.open :focus-visible {
+      outline-color: var(--oxblood);
+    }
+
     /* Footer */
     footer {
       background: var(--deep);
@@ -345,19 +423,22 @@
       font-size: 1rem;
     }
 
+    .button,
+    .story-link,
+    .head,
+    label,
+    .total-row > span:first-child,
+    .chapter-status {
+      font-family: var(--body);
+      font-weight: 600;
+    }
+
     @media (max-width: 860px) {
-      .hero-grid,
       .story-grid {
         grid-template-columns: 1fr;
       }
 
-      .crest {
-        grid-row: 1;
-        width: 190px;
-        margin: 0;
-      }
-
-      .hero { min-height: auto; }
+      .crest { width: 136px; }
 
       .head { display: none; }
 
@@ -382,11 +463,27 @@
         border-top: 1px solid var(--pine);
       }
 
-      .price::before { content: "Price"; font-family: var(--display); }
-      .size::before { content: "Size"; font-family: var(--display); margin-right: 16px; }
+      .price::before { content: "Price"; font-weight: 600; }
+      .size::before { content: "Size"; font-weight: 600; margin-right: 16px; }
       .size select { width: 130px; }
 
       form { grid-template-columns: 1fr; }
+
+      .chapter {
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: 12px 16px;
+        padding: 20px;
+      }
+
+      .chapter-number {
+        align-self: start;
+        font-size: 3rem;
+      }
+
+      .chapter-status {
+        grid-column: 2;
+        text-align: left;
+      }
 
       form .button { width: 100%; }
     }
@@ -394,7 +491,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
 
-      .crest, .count.bump { animation: none; }
+      .count.bump { animation: none; }
     }
   </style>
 </head>
@@ -410,14 +507,10 @@
 
   <main>
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <h1><span>Old</span> <span>Fairway</span> <span>Club</span></h1>
-          <p>A golf club that never existed. The clothes are real.</p>
-          <a class="button" href="#first-drop">Mark your card</a>
-        </div>
+      <canvas id="ball-field" aria-hidden="true"></canvas>
 
-        <svg class="crest" viewBox="0 0 400 400" role="img" aria-label="Old Fairway Club crest with crossed golf clubs and the year 1926">
+      <div class="hero-content" id="hero-content">
+        <svg class="crest" viewBox="0 0 400 400" role="img" aria-label="Old Fairway Club crest with crossed golf clubs, established 2026">
           <defs>
             <path id="ring-top" d="M64 200a136 136 0 0 1 272 0"/>
             <path id="ring-bottom" d="M44 200a156 156 0 0 0 312 0"/>
@@ -425,19 +518,25 @@
           <circle cx="200" cy="200" r="194" fill="#f3dc7b"/>
           <circle cx="200" cy="200" r="182" fill="none" stroke="#0f3d2e" stroke-width="3"/>
           <circle cx="200" cy="200" r="122" fill="#0f3d2e"/>
-          <text font-family="Federo, Georgia, serif" font-size="39" fill="#0f3d2e" letter-spacing="4">
+          <text font-family="'Libre Caslon Display', Georgia, serif" font-size="39" fill="#0f3d2e" letter-spacing="4">
             <textPath href="#ring-top" startOffset="50%" text-anchor="middle">OLD FAIRWAY CLUB</textPath>
           </text>
-          <text font-family="Federo, Georgia, serif" font-size="30" fill="#7a2230" letter-spacing="6">
-            <textPath href="#ring-bottom" startOffset="50%" text-anchor="middle">FOUNDED IN FICTION</textPath>
+          <text font-family="'Libre Caslon Display', Georgia, serif" font-size="32" fill="#7a2230" letter-spacing="6">
+            <textPath href="#ring-bottom" startOffset="50%" text-anchor="middle">ESTABLISHED 2026</textPath>
           </text>
           <g stroke="#f3dc7b" stroke-width="9" stroke-linecap="round" fill="none">
-            <path d="M138 128 248 268q6 10 22 2"/>
-            <path d="M262 128 152 268q-6 10-22 2"/>
+            <path d="M138 138 248 278q6 10 22 2"/>
+            <path d="M262 138 152 278q-6 10-22 2"/>
           </g>
-          <circle cx="200" cy="130" r="17" fill="#dde7d3"/>
-          <text x="200" y="311" font-family="Federo, Georgia, serif" font-size="27" fill="#f3dc7b" text-anchor="middle" letter-spacing="3">1926</text>
+          <circle cx="200" cy="140" r="17" fill="#ffffff"/>
         </svg>
+
+        <h1>Old Fairway Club</h1>
+        <p>Classic golf style, made for today.</p>
+        <div class="hero-actions">
+          <a class="button" href="#first-drop">Reserve the first drop</a>
+          <a class="story-link" href="#story">Read the story</a>
+        </div>
       </div>
     </section>
 
@@ -484,7 +583,7 @@
             </span>
             <div class="piece">
               <h3>The Clubhouse Crewneck</h3>
-              <p>Heavyweight fleece with a faded club crest.</p>
+              <p>Heavyweight fleece with an embroidered club crest.</p>
             </div>
             <span class="price">$68</span>
             <span class="size">
@@ -546,24 +645,323 @@
       </div>
     </section>
 
-    <section class="story">
-      <div class="wrap story-grid">
-        <h2>The club we made up</h2>
-        <div>
-          <p>Picture a private course that opened in 1926, with a crooked clubhouse, a strict dress code and members who took their Sunday rounds far too seriously.</p>
-          <p>None of it is real. We invented Old Fairway Club so we could make the clothes it would have sold in its pro shop: old-fashioned golf style you can wear on the course or anywhere else.</p>
+    <section class="story" id="story">
+      <div class="wrap">
+        <div class="story-grid">
+          <h2>Our story</h2>
+          <div>
+            <p>Old Fairway Club was founded in 2026 out of a love for how golf used to look: knit vests, pleated trousers and clubhouse crests.</p>
+            <p>We make that style for the way people dress now, on the course and off it. Each collection is a new chapter in the club's story.</p>
+          </div>
         </div>
+
+        <ol class="chapters">
+          <li class="chapter open">
+            <span class="chapter-number" aria-hidden="true">1</span>
+            <div>
+              <h3>The Clubhouse</h3>
+              <p>Every club starts with a clubhouse. Ours opens with three pieces: a cap, a crewneck and a polo, each carrying the club crest.</p>
+            </div>
+            <a class="chapter-status" href="#first-drop">Available to reserve</a>
+          </li>
+
+          <li class="chapter">
+            <span class="chapter-number" aria-hidden="true">2</span>
+            <div>
+              <h3>Off Course</h3>
+              <p>Good style doesn't stop at the eighteenth green. This chapter brings cardigans, argyle and pleated skirts into everyday life.</p>
+            </div>
+            <span class="chapter-status">Coming later</span>
+          </li>
+
+          <li class="chapter">
+            <span class="chapter-number" aria-hidden="true">3</span>
+            <div>
+              <h3>The Founders</h3>
+              <p>A tribute to golf's early days, with knit vests, pleated trousers and flat caps cut for how people dress now.</p>
+            </div>
+            <span class="chapter-status">Coming later</span>
+          </li>
+
+          <li class="chapter">
+            <span class="chapter-number" aria-hidden="true">4</span>
+            <div>
+              <h3>The Loud Years</h3>
+              <p>A limited chapter inspired by the 1970s, with wider collars, louder plaid and colors that ignore the dress code.</p>
+            </div>
+            <span class="chapter-status">Coming later</span>
+          </li>
+        </ol>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <p>&copy; 2026 Old Fairway Club. We're a clothing brand. The club and its history are fictional.</p>
+      <p>&copy; 2026 Old Fairway Club. We're a clothing brand, not a golf course.</p>
     </div>
   </footer>
 
   <script>
+    // Moving golf balls. Adjust these two settings to change the effect.
+    const BALL_SPACING = 90000; // Screen area per ball. A lower number means more balls.
+    const BALL_SPEED = 22;      // Average speed in pixels per second.
+
+    (() => {
+      const hero = document.querySelector(".hero");
+      const content = document.getElementById("hero-content");
+      const canvas = document.getElementById("ball-field");
+      const context = canvas.getContext("2d");
+      const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const FRAME_SIZE = 100;
+      const FRAMES = 64;
+      const PER_ROW = 8;
+      const TEXTURE_WIDTH = 384;
+      const TEXTURE_HEIGHT = 192;
+      const HEADING = -.12;
+
+      // A map of the ball's surface, with evenly spaced dimples.
+      function makeSurface() {
+        const dimples = [];
+        const total = 240;
+        const golden = Math.PI * (3 - Math.sqrt(5));
+        for (let i = 0; i < total; i++) {
+          const y = 1 - (2 * (i + .5)) / total;
+          const ring = Math.sqrt(1 - y * y);
+          dimples.push([Math.cos(i * golden) * ring, y, Math.sin(i * golden) * ring]);
+        }
+
+        const surface = new Float32Array(TEXTURE_WIDTH * TEXTURE_HEIGHT);
+        const dimpleSize = .115;
+        for (let row = 0; row < TEXTURE_HEIGHT; row++) {
+          const latitude = ((row + .5) / TEXTURE_HEIGHT - .5) * Math.PI;
+          const y = Math.sin(latitude);
+          const ring = Math.cos(latitude);
+          for (let column = 0; column < TEXTURE_WIDTH; column++) {
+            const longitude = ((column + .5) / TEXTURE_WIDTH) * Math.PI * 2;
+            const x = Math.sin(longitude) * ring;
+            const z = Math.cos(longitude) * ring;
+            let nearest = -1;
+            for (const dimple of dimples) {
+              nearest = Math.max(nearest, x * dimple[0] + y * dimple[1] + z * dimple[2]);
+            }
+            const distance = Math.acos(Math.min(1, nearest)) / dimpleSize;
+            let tone = 248;
+            if (distance < 1) tone = 214 + 34 * distance * distance;
+            else if (distance < 1.18) tone = 255;
+            surface[row * TEXTURE_WIDTH + column] = tone;
+          }
+        }
+        return surface;
+      }
+
+      // Every rolling position of the ball, stored on one sheet.
+      function makeRollSheet() {
+        const surface = makeSurface();
+        const sheet = document.createElement("canvas");
+        sheet.width = FRAME_SIZE * PER_ROW;
+        sheet.height = FRAME_SIZE * Math.ceil(FRAMES / PER_ROW);
+        const draw = sheet.getContext("2d");
+        const radius = FRAME_SIZE / 2 - 1;
+        const center = FRAME_SIZE / 2;
+        const points = [];
+
+        for (let py = 0; py < FRAME_SIZE; py++) {
+          for (let px = 0; px < FRAME_SIZE; px++) {
+            const x = (px + .5 - center) / radius;
+            const y = (py + .5 - center) / radius;
+            const edge = Math.hypot(x, y);
+            if (edge > 1.02) continue;
+            const scale = Math.min(1, 1 / edge || 1);
+            const z = Math.sqrt(Math.max(0, 1 - Math.min(1, edge) ** 2));
+            const latitude = Math.asin(y * scale);
+            const longitude = Math.atan2(x * scale, z) + Math.PI * 2;
+            points.push({
+              index: (py * FRAME_SIZE + px) * 4,
+              row: Math.min(TEXTURE_HEIGHT - 1, Math.floor((latitude / Math.PI + .5) * TEXTURE_HEIGHT)),
+              column: (longitude / (Math.PI * 2)) * TEXTURE_WIDTH,
+              alpha: Math.round(Math.max(0, Math.min(1, (1 - edge) * radius + .5)) * 255)
+            });
+          }
+        }
+
+        for (let frame = 0; frame < FRAMES; frame++) {
+          const image = draw.createImageData(FRAME_SIZE, FRAME_SIZE);
+          const shift = (frame / FRAMES) * TEXTURE_WIDTH;
+          for (const point of points) {
+            const column = Math.floor(point.column - shift + TEXTURE_WIDTH * 2) % TEXTURE_WIDTH;
+            const tone = surface[point.row * TEXTURE_WIDTH + column];
+            image.data[point.index] = tone;
+            image.data[point.index + 1] = tone;
+            image.data[point.index + 2] = tone - 3;
+            image.data[point.index + 3] = point.alpha;
+          }
+          draw.putImageData(image, (frame % PER_ROW) * FRAME_SIZE, Math.floor(frame / PER_ROW) * FRAME_SIZE);
+        }
+        return sheet;
+      }
+
+      // Sunlight from the top left, which stays still while the ball rolls.
+      function makeLight() {
+        const light = document.createElement("canvas");
+        light.width = light.height = FRAME_SIZE;
+        const draw = light.getContext("2d");
+        const size = FRAME_SIZE;
+        const shade = draw.createRadialGradient(size * .36, size * .32, size * .02, size * .5, size * .5, size * .51);
+        shade.addColorStop(0, "rgba(255, 255, 255, .7)");
+        shade.addColorStop(.42, "rgba(255, 255, 255, 0)");
+        shade.addColorStop(.76, "rgba(45, 62, 54, .2)");
+        shade.addColorStop(1, "rgba(14, 34, 26, .62)");
+        draw.fillStyle = shade;
+        draw.beginPath();
+        draw.arc(size / 2, size / 2, size / 2 - 1, 0, Math.PI * 2);
+        draw.fill();
+        return light;
+      }
+
+      function makeShadow() {
+        const shadow = document.createElement("canvas");
+        shadow.width = shadow.height = FRAME_SIZE;
+        const draw = shadow.getContext("2d");
+        const size = FRAME_SIZE;
+        const shade = draw.createRadialGradient(size / 2, size / 2, size * .18, size / 2, size / 2, size / 2);
+        shade.addColorStop(0, "rgba(3, 20, 14, .6)");
+        shade.addColorStop(1, "rgba(3, 20, 14, 0)");
+        draw.fillStyle = shade;
+        draw.fillRect(0, 0, size, size);
+        return shadow;
+      }
+
+      const sheet = makeRollSheet();
+      const light = makeLight();
+      const shadow = makeShadow();
+      let balls = [];
+      let width = 0;
+      let height = 0;
+      let textArea = null;
+      let frame = 0;
+      let lastTime = 0;
+
+      function pickRow() {
+        const clearTop = textArea.top > 40;
+        const clearBottom = height - textArea.bottom > 40;
+        if (Math.random() < .3 || (!clearTop && !clearBottom)) return Math.random() * height;
+        if (clearTop && (!clearBottom || Math.random() < .5)) return Math.random() * textArea.top;
+        return textArea.bottom + Math.random() * (height - textArea.bottom);
+      }
+
+      // Every ball keeps to its own parallel lane, so balls never run into each other.
+      function pickClearRow(x, current) {
+        let row = pickRow();
+        for (let attempt = 0; attempt < 16; attempt++) {
+          const lane = row - x * Math.tan(HEADING);
+          const clear = balls.every((ball) => ball === current ||
+            Math.abs(lane - (ball.y - ball.x * Math.tan(HEADING))) > 54);
+          if (clear) break;
+          row = pickRow();
+        }
+        return row;
+      }
+
+      function makeBall() {
+        const x = Math.random() * width;
+        return {
+          x,
+          y: pickClearRow(x),
+          size: 20 + Math.random() * 26,
+          speed: BALL_SPEED * (.7 + Math.random() * .6),
+          rolled: Math.random() * 1000
+        };
+      }
+
+      // Balls fade out before they reach the words and buttons.
+      function visibility(ball) {
+        const outsideX = Math.max(textArea.left - ball.x, ball.x - textArea.right, 0);
+        const outsideY = Math.max(textArea.top - ball.y, ball.y - textArea.bottom, 0);
+        return Math.min(1, Math.max(0, (Math.hypot(outsideX, outsideY) - ball.size / 2) / 22));
+      }
+
+      function drawBall(ball) {
+        const alpha = visibility(ball);
+        if (alpha === 0) return;
+
+        const size = ball.size;
+        const turn = (ball.rolled / (size / 2)) / (Math.PI * 2);
+        const position = Math.floor((turn - Math.floor(turn)) * FRAMES) % FRAMES;
+        const sourceX = (position % PER_ROW) * FRAME_SIZE;
+        const sourceY = Math.floor(position / PER_ROW) * FRAME_SIZE;
+
+        context.globalAlpha = alpha;
+        context.drawImage(shadow, ball.x - size * .46, ball.y - size * .4, size * 1.3, size * 1.3);
+        context.save();
+        context.translate(ball.x, ball.y);
+        context.rotate(HEADING);
+        context.drawImage(sheet, sourceX, sourceY, FRAME_SIZE, FRAME_SIZE, -size / 2, -size / 2, size, size);
+        context.restore();
+        context.drawImage(light, ball.x - size / 2, ball.y - size / 2, size, size);
+      }
+
+      function draw() {
+        context.clearRect(0, 0, width, height);
+        balls.forEach(drawBall);
+        context.globalAlpha = 1;
+      }
+
+      function animate(time) {
+        const seconds = Math.min(.05, (time - lastTime) / 1000 || 0);
+        lastTime = time;
+        balls.forEach((ball) => {
+          const distance = ball.speed * seconds;
+          ball.x += Math.cos(HEADING) * distance;
+          ball.y += Math.sin(HEADING) * distance;
+          ball.rolled += distance;
+          if (ball.x > width + ball.size || ball.y < -ball.size) {
+            ball.x = -ball.size;
+            ball.y = pickClearRow(ball.x, ball);
+          }
+        });
+        draw();
+        frame = requestAnimationFrame(animate);
+      }
+
+      function start() {
+        cancelAnimationFrame(frame);
+        const scale = Math.min(window.devicePixelRatio || 1, 2);
+        const heroBox = hero.getBoundingClientRect();
+        const parts = [...content.children].map((part) => part.getBoundingClientRect());
+        const margin = 16;
+        width = heroBox.width;
+        height = heroBox.height;
+        textArea = {
+          left: Math.min(...parts.map((part) => part.left)) - heroBox.left - margin,
+          right: Math.max(...parts.map((part) => part.right)) - heroBox.left + margin,
+          top: Math.min(...parts.map((part) => part.top)) - heroBox.top - margin,
+          bottom: Math.max(...parts.map((part) => part.bottom)) - heroBox.top + margin
+        };
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        context.setTransform(scale, 0, 0, scale, 0, 0);
+        context.imageSmoothingQuality = "high";
+        balls = [];
+        const count = Math.max(7, Math.round((width * height) / BALL_SPACING));
+        for (let i = 0; i < count; i++) balls.push(makeBall());
+        lastTime = 0;
+        if (calm.matches) {
+          draw();
+        } else {
+          frame = requestAnimationFrame(animate);
+        }
+      }
+
+      // Phones resize the page when the address bar hides, so only restart on a width change.
+      window.addEventListener("resize", () => {
+        if (hero.getBoundingClientRect().width !== width) start();
+      });
+      calm.addEventListener("change", start);
+      document.fonts?.ready.then(start);
+      start();
+    })();
+
     // Change this to the email address where you want to receive reservations.
     const CLUB_EMAIL = "your-email@example.com";
 
